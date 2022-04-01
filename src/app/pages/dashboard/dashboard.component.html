@@ -5,18 +5,18 @@
     </div>
     <mat-list style="padding: 0; margin: 0;">
       <mat-list-item>
-        <button style="text-align: start;" class="w-100" type="button" mat-button (click)="drawer.toggle()">
+        <button style="text-align: start;" class="w-100" type="button" mat-button [routerLink]="'/dashboard/home'">
           <mat-icon style="margin-right: 5px;" aria-hidden="false" aria-label="Example home icon">home
           </mat-icon>Home
         </button>
       </mat-list-item>
       <mat-list-item> <button style="text-align: start;" class="w-100" type="button" mat-button
-          (click)="drawer.toggle()">
+          [routerLink]="'/dashboard/items'">
           <mat-icon style="margin-right: 5px;" aria-hidden="false" aria-label="Example home icon">category
           </mat-icon>Items
         </button> </mat-list-item>
       <mat-list-item> <button style="text-align: start;" class="w-100" type="button" mat-button
-          (click)="drawer.toggle()">
+          [routerLink]="'/dashboard/orders'">
           <mat-icon style="margin-right: 5px;" aria-hidden="false" aria-label="Example home icon">toc
           </mat-icon>
           Orders
@@ -33,7 +33,7 @@
     <mat-icon aria-hidden="false" aria-label="Example home icon">legend_toggle</mat-icon>
   </button>
   <div class="example-sidenav-content">
-
+    <router-outlet></router-outlet>
   </div>
 
 </mat-drawer-container>
