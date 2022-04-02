@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Order } from 'src/app/utils/common.interface';
 
 @Component({
@@ -38,11 +39,27 @@ export class HomeComponent implements OnInit {
       price: 70,
       date: new Date(),
     },
+    {
+      orderid: '5',
+      item: 'Egg Roll',
+      price: 60,
+      date: new Date(),
+    },
+    {
+      orderid: '6',
+      item: 'Dry Momo',
+      price: 70,
+      date: new Date(),
+    },
   ];
 
   orderTableColumns: string[] = ['orderid', 'item', 'price', 'date'];
 
-  constructor() {}
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {}
+
+  navigate(route: string) {
+    this._router.navigate(['dashboard', route]);
+  }
 }
