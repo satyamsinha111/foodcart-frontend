@@ -26,7 +26,12 @@ export class ItemsComponent implements OnInit {
     },
   ];
   dataSource: any[] = [];
-  displayedColumns: any[] = ['category_id', 'category_name', 'category_desc'];
+  displayedColumns: any[] = [
+    'category_id',
+    'category_name',
+    'category_desc',
+    'action',
+  ];
   constructor() {}
 
   ngOnInit(): void {

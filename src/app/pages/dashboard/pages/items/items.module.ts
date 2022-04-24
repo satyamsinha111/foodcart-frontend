@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [ItemsComponent],
@@ -16,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
     MatIconModule,
     MatDividerModule,
     MatTableModule,
+    MatMenuModule,
   ],
 })
 export class ItemsModule {}

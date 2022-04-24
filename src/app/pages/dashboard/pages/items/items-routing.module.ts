@@ -12,7 +12,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'item-list',
+    path: ':itemid',
     loadChildren: () =>
       import('./pages/item-list/item-list.module').then(
         (m) => m.ItemListModule
