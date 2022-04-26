@@ -8,24 +8,29 @@
               <mat-card-title>USER LOGIN</mat-card-title>
             </mat-card-header>
             <mat-divider></mat-divider>
-            <mat-card-content>
-              <div class="col-md-12 col-sm-12 my-2">
-                <mat-form-field appearance="fill" class="w-100">
-                  <mat-label>Email</mat-label>
-                  <input matInput type="email">
-                </mat-form-field>
-              </div>
-              <div class="col-md-12 col-sm-12 my-2">
-                <mat-form-field appearance="fill" class="w-100">
-                  <mat-label>Password</mat-label>
-                  <input matInput type="password">
-                </mat-form-field>
-              </div>
-            </mat-card-content>
-            <mat-card-actions align="end">
-              <button mat-button>FORGOT PASSWORD?</button>
-              <button mat-button>LOGIN</button>
-            </mat-card-actions>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)">
+              <mat-card-content>
+                <div class="col-md-12 col-sm-12 my-2">
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email">
+                    <mat-error *ngIf="loginForm.get('email')?.invalid">Email format is not correct</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12 col-sm-12 my-2">
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                    <mat-error *ngIf="loginForm.get('password')?.invalid">Password is required</mat-error>
+
+                  </mat-form-field>
+                </div>
+              </mat-card-content>
+              <mat-card-actions align="end">
+                <button mat-button>FORGOT PASSWORD?</button>
+                <button mat-button [disabled]="loginForm.invalid">LOGIN</button>
+              </mat-card-actions>
+            </form>
           </mat-card>
         </div>
       </div>
