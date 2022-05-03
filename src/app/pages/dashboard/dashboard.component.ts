@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoaderService } from 'src/app/utils/services/loader.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +10,14 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   showFiller: boolean = false;
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, private _loaderService: LoaderService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._loaderService.updateLoader(true);
+    setTimeout(() => {
+      this._loaderService.updateLoader(false);
+    }, 3000);
+  }
 
   logout() {
     localStorage.clear();

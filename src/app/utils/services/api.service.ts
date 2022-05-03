@@ -13,4 +13,20 @@ export class ApiService {
       observe: 'response',
     });
   }
+
+  addCategory(payload: any) {
+    return this.httpClient.post(`${environment.apiUrl}/category`, payload);
+  }
+
+  getAllCategories() {
+    return this.httpClient.get(`${environment.apiUrl}/categories`);
+  }
+
+  deleteCategory(catid: string) {
+    return this.httpClient.delete(`${environment.apiUrl}/category/${catid}`);
+  }
+
+  updateCategory(data: any, id: any) {
+    return this.httpClient.put(`${environment.apiUrl}/category/${id}`, data);
+  }
 }
