@@ -15,8 +15,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { AddItemComponent } from './pages/add-item/add-item.component';
+import { EditItemComponent } from './pages/edit-item/edit-item.component';
 @NgModule({
-  declarations: [ItemsComponent, AddCategoryComponent, EditCategoryComponent],
+  declarations: [ItemsComponent, AddCategoryComponent, EditCategoryComponent, AddItemComponent, EditItemComponent],
   imports: [
     CommonModule,
     ItemsRoutingModule,

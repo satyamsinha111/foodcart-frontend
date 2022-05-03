@@ -29,4 +29,8 @@ export class ApiService {
   updateCategory(data: any, id: any) {
     return this.httpClient.put(`${environment.apiUrl}/category/${id}`, data);
   }
+
+  getItemsByCategory(catId: string) {
+    return this.httpClient.get(`${environment.apiUrl}/item/${catId}`);
+  }
 }

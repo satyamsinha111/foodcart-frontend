@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ItemListComponent],
@@ -18,6 +20,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDividerModule,
     MatTableModule,
     MatMenuModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class ItemListModule {}
