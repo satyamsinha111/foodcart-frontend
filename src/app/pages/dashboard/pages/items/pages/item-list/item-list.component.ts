@@ -59,6 +59,7 @@ export class ItemListComponent implements OnInit {
     let dialogRef = this._dialog.open(AddItemComponent, {
       width: '300px',
       hasBackdrop: false,
+      data: this.categoryid,
     });
     dialogRef.afterClosed().subscribe((data) => {
       this.getItemList();

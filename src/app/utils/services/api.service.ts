@@ -33,4 +33,8 @@ export class ApiService {
   getItemsByCategory(catId: string) {
     return this.httpClient.get(`${environment.apiUrl}/item/${catId}`);
   }
+
+  addNewItem(payload: any) {
+    return this.httpClient.post(`${environment.apiUrl}/item`, payload);
+  }
 }
