@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmComponent } from 'src/app/components/confirm/confirm.component';
 import { ApiService } from 'src/app/utils/services/api.service';
 import { LoaderService } from 'src/app/utils/services/loader.service';
 import { AddItemComponent } from '../add-item/add-item.component';
+import { DetailsComponent } from '../details/details.component';
 import { EditItemComponent } from '../edit-item/edit-item.component';
 
 @Component({
@@ -13,27 +15,8 @@ import { EditItemComponent } from '../edit-item/edit-item.component';
 })
 export class ItemListComponent implements OnInit {
   categoryid: string | any = '';
-  itemList: any[] = [
-    {
-      item_id: 1,
-      item_name: 'Lunch',
-      item_desc: 'lorem ipsum',
-    },
-    {
-      item_id: 1,
-
-      item_name: 'Breakfast',
-      item_desc: 'lorem ipsum',
-    },
-    {
-      item_id: 1,
-
-      item_name: 'Dinner',
-      item_desc: 'lorem ipsum',
-    },
-  ];
   dataSource: any[] = [];
-  displayedColumns: any[] = ['item_id', 'item_name', 'item_desc', 'action'];
+  displayedColumns: any[] = ['_id', 'name', 'desc', 'price', 'action'];
 
   constructor(
     private _router: Router,
@@ -52,7 +35,35 @@ export class ItemListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSource = this.itemList;
+    // this.dataSource = this.itemList;
+  }
+
+  deleteItem(itemid: string) {
+    let dialogRef = this._dialog.open(ConfirmComponent, {
+      width: '300px',
+      hasBackdrop: false,
+    });
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this._loaderService.updateLoader(true);
+        //Execute the function of delete
+        this._apiService.deleteItem(itemid).subscribe((data) => {
+          console.log(data);
+          this.getItemList();
+        });
+      }
+    });
+  }
+
+  viewItem(data: any) {
+    let dialogRef = this._dialog.open(DetailsComponent, {
+      width: '300px',
+      hasBackdrop: false,
+      data: data,
+    });
+    dialogRef.afterClosed().subscribe((data) => {
+      this.getItemList();
+    });
   }
 
   onAddItem() {
@@ -66,11 +77,28 @@ export class ItemListComponent implements OnInit {
     });
   }
 
+  editItem(element: any) {
+    let dialogRef = this._dialog.open(EditItemComponent, {
+      width: '300px',
+      hasBackdrop: false,
+      data: {
+        id: this.categoryid,
+        data: element,
+      },
+    });
+    dialogRef.afterClosed().subscribe((data) => {
+      this.getItemList();
+    });
+  }
+
   getItemList() {
     this._loaderService.updateLoader(true);
-    this._apiService.getItemsByCategory(this.categoryid).subscribe((data) => {
-      this._loaderService.updateLoader(false);
-      console.log(data);
-    });
+    this._apiService
+      .getItemsByCategory(this.categoryid)
+      .subscribe((data: any) => {
+        this._loaderService.updateLoader(false);
+        console.log(data);
+        this.dataSource = data.items;
+      });
   }
 }

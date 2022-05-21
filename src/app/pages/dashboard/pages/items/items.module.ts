@@ -17,8 +17,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { AddItemComponent } from './pages/add-item/add-item.component';
 import { EditItemComponent } from './pages/edit-item/edit-item.component';
+import { DetailsComponent } from './pages/details/details.component';
 @NgModule({
-  declarations: [ItemsComponent, AddCategoryComponent, EditCategoryComponent, AddItemComponent, EditItemComponent],
+  declarations: [ItemsComponent, AddCategoryComponent, EditCategoryComponent, AddItemComponent, EditItemComponent, DetailsComponent],
   imports: [
     CommonModule,
     ItemsRoutingModule,

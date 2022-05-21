@@ -31,10 +31,17 @@ export class ApiService {
   }
 
   getItemsByCategory(catId: string) {
-    return this.httpClient.get(`${environment.apiUrl}/item/${catId}`);
+    return this.httpClient.get(`${environment.apiUrl}/item/category/${catId}`);
   }
 
   addNewItem(payload: any) {
     return this.httpClient.post(`${environment.apiUrl}/item`, payload);
+  }
+
+  updateItem(payload: any, itemid: any) {
+    return this.httpClient.put(`${environment.apiUrl}/item/${itemid}`, payload);
+  }
+  deleteItem(itemid: any) {
+    return this.httpClient.delete(`${environment.apiUrl}/item/${itemid}`);
   }
 }

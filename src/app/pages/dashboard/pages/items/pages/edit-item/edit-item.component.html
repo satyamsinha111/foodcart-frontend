@@ -1,1 +1,26 @@
-<p>edit-item works!</p>
+<div class="wrapper">
+  <div class="d-flex justify-content-between ">
+    <h2 mat-dialog-title>Edit Item</h2>
+    <mat-icon class="mt-2" mat-dialog-close="">close</mat-icon>
+  </div>
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" formControlName="price">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="desc"></textarea>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="null" cdkFocusInitial>Save</button>
+      <button mat-button [mat-dialog-close]="">Cancel</button>
+    </div>
+  </form>
+</div>

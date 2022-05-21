@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/app/utils/services/api.service';
 import { LoaderService } from 'src/app/utils/services/loader.service';
 
@@ -14,7 +14,8 @@ export class AddItemComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _apiService: ApiService,
-    private _loaderService: LoaderService
+    private _loaderService: LoaderService,
+    private _matDialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +36,7 @@ export class AddItemComponent implements OnInit {
     this._apiService.addNewItem(payloadObj).subscribe((data) => {
       console.log(data);
       this._loaderService.updateLoader(false);
+      this._matDialog.closeAll();
     });
   }
 }
